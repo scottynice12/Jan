@@ -21,7 +21,6 @@
             padding: 2rem 1.5rem;
         }
 
-        /* main card – warm, intimate, vintage-postcard feel */
         .card {
             max-width: 800px;
             width: 100%;
@@ -38,7 +37,6 @@
             transform: scale(1.01);
         }
 
-        /* header with subtle film/soccer accents */
         .header-tape {
             background: #f4e9d8;
             padding: 0.75rem 1.5rem;
@@ -56,7 +54,6 @@
             padding: 2.5rem 2.2rem 2rem 2.2rem;
         }
 
-        /* greeting */
         .greeting {
             font-size: 1.9rem;
             font-weight: 600;
@@ -87,7 +84,6 @@
             font-weight: 500;
         }
 
-        /* two‑image row (Messi + Letterboxd) */
         .icons-row {
             display: flex;
             flex-wrap: wrap;
@@ -117,14 +113,15 @@
             font-weight: 500;
         }
 
+        /* fixed image styles */
         .messi-img {
             max-width: 180px;
             width: 100%;
             border-radius: 24px;
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s;
             border: 2px solid #fff2e2;
-            background: white;
+            background: #f0f0f0;
+            object-fit: cover;
         }
 
         .letterboxd-img {
@@ -132,12 +129,12 @@
             width: 100%;
             border-radius: 24px;
             background: #1a2c2e;
-            padding: 6px 12px;
+            padding: 8px 12px;
             box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s;
+            background-color: #1a2c2e;
+            object-fit: contain;
         }
 
-        /* signature */
         .signature {
             margin-top: 2.2rem;
             text-align: right;
@@ -159,7 +156,6 @@
             margin-top: 5px;
         }
 
-        /* retro footer */
         .footer-note {
             background: #f5ede1;
             padding: 0.7rem;
@@ -200,23 +196,23 @@
         </div>
 
         <div class="message">
-            <p>This is my last semester at <strong>PVCC</strong>. I know you're at ASU lately, but I always loved you since the beginning of when I met you at PVCC and our experience in the <strong>ICC</strong> — and how we always talk about niche movies, football and <span class="highlight">retarded jokes</span>. </p>
+            <p>This is my last semester at <strong>PVCC</strong>. I know you're at ASU lately, but I always loved you since the beginning of when I met you at PVCC and our experience in the <strong>ICC</strong> — and how we always talk about niche movies, football and <span class="highlight">retarded jokes</span>.</p>
             <p>I will always appreciate the intimate conversations we had. From late-night breakdowns of obscure Criterion films to heated Messi debates and the kind of dumb, unfiltered laughs that only real friends share — those moments are tattooed on my memory.</p>
             <p>Wishing you nothing but the best in Tempe. Keep the projector running and the banter sharp.</p>
         </div>
 
-        <!-- MESSI image + LETTERBOXD logo (as you asked) -->
+        <!-- FIXED IMAGES: reliable, hotlink-allowed URLs -->
         <div class="icons-row">
             <div class="image-unit">
                 <img class="messi-img" 
-                     src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Lionel_Messi_20180626.jpg" 
+                     src="https://cdn.pixabay.com/photo/2017/08/10/14/02/messi-2625330_640.jpg" 
                      alt="Lionel Messi - football legend"
                      title="⚽ The GOAT, just like our football talks">
                 <span>🇦🇷 · the messi magic</span>
             </div>
             <div class="image-unit">
                 <img class="letterboxd-img" 
-                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Letterboxd_Logo.png/1024px-Letterboxd_Logo.png" 
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Letterboxd_Logo.png/800px-Letterboxd_Logo.png" 
                      alt="Letterboxd logo - film logging"
                      title="🎬 Letterboxd — for all our niche movie obsessions">
                 <span>🎞️ · letterboxd · 🎞️</span>
@@ -234,3 +230,5 @@
 </div>
 </body>
 </html>
+
+      
