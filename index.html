@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>For Jan · A card from Scott</title>
     <style>
         * {
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: linear-gradient(145deg, #1a2a3a 0%, #0f1a24 100%);
+            background: linear-gradient(145deg, #14181c 0%, #0a0e12 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -21,28 +21,50 @@
             padding: 2rem 1.5rem;
         }
 
+        /* vintage cinema postcard feel */
         .card {
             max-width: 800px;
             width: 100%;
-            background: #fffef7;
-            background-image: radial-gradient(circle at 10% 20%, rgba(245, 240, 225, 0.4) 2%, transparent 2.5%);
-            background-size: 28px 28px;
+            background: #fffaf2;
+            background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 8px);
             border-radius: 2rem;
-            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,215,150,0.3);
             overflow: hidden;
+            transition: transform 0.2s ease;
         }
 
-        .header-tape {
-            background: #f4e9d8;
-            padding: 0.75rem 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            color: #b47c48;
-            border-bottom: 1px dashed #e2cfb3;
-            font-weight: 500;
-            text-transform: uppercase;
-            font-family: monospace;
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        /* film strip header */
+        .film-strip {
+            background: #2c241a;
+            padding: 0.7rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            border-bottom: 3px solid #e6bc7e;
+            position: relative;
+        }
+        .film-strip::before,
+        .film-strip::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: repeating-linear-gradient(90deg, #3a2e22, #3a2e22 8px, #1f1912 8px, #1f1912 16px);
+            pointer-events: none;
+        }
+        .film-strip::before { left: 0; }
+        .film-strip::after { right: 0; }
+        .film-sprocket {
+            width: 22px;
+            height: 22px;
+            background: #e6bc7e;
+            border-radius: 4px;
+            opacity: 0.7;
         }
 
         .letter-body {
@@ -50,19 +72,20 @@
         }
 
         .greeting {
-            font-size: 1.9rem;
+            font-size: 2rem;
             font-weight: 600;
             font-family: 'Georgia', 'Times New Roman', serif;
-            color: #2c3e2f;
+            color: #3a2c1f;
             margin-bottom: 1.5rem;
-            border-left: 5px solid #cb8b3e;
+            letter-spacing: -0.2px;
+            border-left: 5px solid #c47a2e;
             padding-left: 1.2rem;
         }
 
         .message {
-            font-size: 1.08rem;
+            font-size: 1.05rem;
             line-height: 1.65;
-            color: #2c2820;
+            color: #2d281f;
             margin-bottom: 2rem;
         }
 
@@ -71,92 +94,105 @@
         }
 
         .message .highlight {
-            background: #faeecb;
+            background: #f7e5c2;
             padding: 0 4px;
             border-radius: 8px;
+            font-weight: 500;
         }
 
-        /* image row with SVGs (always visible) */
-        .icons-row {
+        /* cinema + soccer art row – all vector, no external images */
+        .art-row {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
             align-items: center;
-            margin: 2rem 0;
-            background: #fef8ef;
-            padding: 1.2rem 1rem;
+            margin: 2rem 0 2rem;
+            background: #fbf4e6;
+            padding: 1.5rem 1rem;
             border-radius: 2rem;
-            border: 1px solid #f0e2cf;
+            border: 1px solid #eedbba;
         }
 
-        .image-unit {
+        .art-item {
             text-align: center;
             flex: 1;
-            min-width: 140px;
+            min-width: 130px;
         }
 
-        .image-unit span {
-            display: block;
+        .art-caption {
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #a57743;
-            margin-top: 10px;
+            letter-spacing: 1.5px;
+            color: #a0763e;
+            margin-top: 12px;
             font-weight: 500;
+            font-family: monospace;
         }
 
-        /* SVGs are fully self-contained, no hotlinking issues */
-        .messi-svg {
-            width: 160px;
-            height: auto;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.15));
+        /* hand-drawn style soccer ball */
+        .soccer-svg {
+            width: 110px;
+            height: 110px;
+            filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.1));
         }
 
-        .letterboxd-svg {
-            width: 150px;
-            height: auto;
+        /* cinema clapperboard / film reel vibe */
+        .cinema-svg {
+            width: 120px;
+            height: 120px;
         }
 
         .signature {
             margin-top: 2.2rem;
             text-align: right;
             font-family: 'Brush Script MT', 'Segoe Script', cursive;
-            font-size: 2.3rem;
+            font-size: 2.4rem;
+            font-weight: normal;
             color: #5e3a1f;
-            border-top: 2px dotted #eeddbb;
+            border-top: 2px dotted #e6cfaa;
             padding-top: 1.5rem;
         }
 
         .signature small {
             font-family: 'Segoe UI', monospace;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             display: block;
-            color: #856e4b;
+            color: #8b6c42;
+            letter-spacing: 0.5px;
         }
 
-        .footer-note {
-            background: #f5ede1;
-            padding: 0.7rem;
+        .footer-cinema {
+            background: #2e261c;
+            padding: 0.8rem;
             text-align: center;
             font-size: 0.7rem;
-            color: #a28058;
-            border-top: 1px solid #ebddca;
+            color: #dbbc8c;
+            border-top: 1px solid #52442e;
             font-family: monospace;
+            letter-spacing: 1px;
         }
 
         @media (max-width: 550px) {
             .letter-body { padding: 1.8rem; }
             .greeting { font-size: 1.6rem; }
-            .message { font-size: 0.98rem; }
+            .message { font-size: 0.95rem; }
+            .soccer-svg { width: 80px; height: 80px; }
+            .cinema-svg { width: 85px; height: 85px; }
         }
     </style>
 </head>
 <body>
 <div class="card">
-    <div class="header-tape">
-        ⚽ 🎞️  ·  PVCC · ICC memories  ·  🎞️ ⚽
+    <!-- film strip header -->
+    <div class="film-strip">
+        <div class="film-sprocket"></div>
+        <div class="film-sprocket"></div>
+        <div class="film-sprocket"></div>
+        <div class="film-sprocket"></div>
+        <div class="film-sprocket"></div>
     </div>
+
     <div class="letter-body">
         <div class="greeting">Dear Jan,</div>
 
@@ -166,47 +202,53 @@
             <p>Wishing you nothing but the best in Tempe. Keep the projector running and the banter sharp.</p>
         </div>
 
-        <!-- Messi SVG + Letterboxd SVG (always visible, no copyright blocking) -->
-        <div class="icons-row">
-            <div class="image-unit">
-                <!-- Messi illustration (simple but recognizable) -->
-                <svg class="messi-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="100" r="95" fill="#f5d742" stroke="#111" stroke-width="3"/>
-                    <!-- hair -->
-                    <path d="M40 70 Q45 40 70 35 Q80 32 90 38 Q100 30 110 35 Q130 32 140 45 Q155 55 155 75" stroke="#3b2a1f" stroke-width="8" fill="none" stroke-linecap="round"/>
-                    <path d="M50 68 Q60 48 80 45" stroke="#3b2a1f" stroke-width="6" fill="none"/>
-                    <path d="M140 58 Q130 45 115 42" stroke="#3b2a1f" stroke-width="6" fill="none"/>
-                    <!-- eyes -->
-                    <circle cx="72" cy="85" r="8" fill="white" stroke="#111" stroke-width="2"/>
-                    <circle cx="128" cy="85" r="8" fill="white" stroke="#111" stroke-width="2"/>
-                    <circle cx="74" cy="87" r="3" fill="black"/>
-                    <circle cx="130" cy="87" r="3" fill="black"/>
-                    <!-- eyebrows -->
-                    <line x1="62" y1="75" x2="82" y2="72" stroke="#2c1a0c" stroke-width="4" stroke-linecap="round"/>
-                    <line x1="138" y1="75" x2="118" y2="72" stroke="#2c1a0c" stroke-width="4" stroke-linecap="round"/>
-                    <!-- nose -->
-                    <path d="M98 95 Q100 105 102 95" stroke="#c97e3a" stroke-width="2.5" fill="none"/>
-                    <!-- smile -->
-                    <path d="M80 115 Q100 135 120 115" stroke="#111" stroke-width="3" fill="none" stroke-linecap="round"/>
-                    <!-- beard -->
-                    <path d="M72 125 Q80 140 100 142 Q120 140 128 125" fill="#8b6946" stroke="none" opacity="0.7"/>
-                    <!-- jersey stripes -->
-                    <path d="M75 150 L70 190 M90 148 L88 192 M110 148 L112 192 M125 150 L130 190" stroke="#1a5276" stroke-width="5" stroke-linecap="round"/>
-                    <text x="100" y="178" font-size="14" text-anchor="middle" fill="white" font-weight="bold" font-family="sans-serif">10</text>
+        <!-- cinema + soccer ball art (hand-drawn style, no external images) -->
+        <div class="art-row">
+            <div class="art-item">
+                <!-- Drawn soccer ball SVG -->
+                <svg class="soccer-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="white" stroke="#222" stroke-width="2.5"/>
+                    <!-- pentagon center -->
+                    <polygon points="50,30 62,38 59,52 41,52 38,38" fill="#222" stroke="#222" stroke-width="1.2"/>
+                    <!-- lines radiating from pentagon vertices -->
+                    <line x1="50" y1="30" x2="50" y2="10" stroke="#222" stroke-width="2"/>
+                    <line x1="62" y1="38" x2="82" y2="30" stroke="#222" stroke-width="2"/>
+                    <line x1="59" y1="52" x2="75" y2="68" stroke="#222" stroke-width="2"/>
+                    <line x1="41" y1="52" x2="25" y2="68" stroke="#222" stroke-width="2"/>
+                    <line x1="38" y1="38" x2="18" y2="30" stroke="#222" stroke-width="2"/>
+                    <!-- additional classic panel lines -->
+                    <path d="M50 10 L30 18 L18 30" stroke="#222" stroke-width="1.5" fill="none"/>
+                    <path d="M50 10 L70 18 L82 30" stroke="#222" stroke-width="1.5" fill="none"/>
+                    <path d="M82 30 L90 50 L75 68" stroke="#222" stroke-width="1.5" fill="none"/>
+                    <path d="M18 30 L10 50 L25 68" stroke="#222" stroke-width="1.5" fill="none"/>
+                    <path d="M25 68 L40 80 L60 80 L75 68" stroke="#222" stroke-width="1.5" fill="none"/>
+                    <path d="M40 80 L50 95 L60 80" stroke="#222" stroke-width="1.5" fill="none"/>
                 </svg>
-                <span>🇦🇷 · Messi · The GOAT</span>
+                <div class="art-caption">⚽ · DÍAS DE FÚTBOL · ⚽</div>
             </div>
 
-            <div class="image-unit">
-                <!-- Letterboxd-style logo SVG -->
-                <svg class="letterboxd-svg" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="200" height="100" rx="20" fill="#1a2c2e" />
-                    <circle cx="50" cy="50" r="28" fill="#00e054" stroke="white" stroke-width="3"/>
-                    <circle cx="100" cy="50" r="28" fill="#0066cc" stroke="white" stroke-width="3"/>
-                    <circle cx="150" cy="50" r="28" fill="#ffcc00" stroke="white" stroke-width="3"/>
-                    <text x="100" y="82" font-size="18" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-weight="bold" letter-spacing="3">LETTERBOXD</text>
+            <div class="art-item">
+                <!-- Cinema clapperboard / film reel aesthetic -->
+                <svg class="cinema-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- film reel circle -->
+                    <circle cx="50" cy="50" r="42" fill="#1e1b16" stroke="#c9a457" stroke-width="2.5"/>
+                    <circle cx="50" cy="50" r="30" fill="#2d251c" stroke="#c9a457" stroke-width="1.5" stroke-dasharray="6 4"/>
+                    <!-- sprocket holes -->
+                    <circle cx="50" cy="14" r="4" fill="#c9a457"/>
+                    <circle cx="50" cy="86" r="4" fill="#c9a457"/>
+                    <circle cx="14" cy="50" r="4" fill="#c9a457"/>
+                    <circle cx="86" cy="50" r="4" fill="#c9a457"/>
+                    <circle cx="32" cy="24" r="3.5" fill="#c9a457"/>
+                    <circle cx="68" cy="24" r="3.5" fill="#c9a457"/>
+                    <circle cx="32" cy="76" r="3.5" fill="#c9a457"/>
+                    <circle cx="68" cy="76" r="3.5" fill="#c9a457"/>
+                    <!-- clapperboard top -->
+                    <rect x="30" y="44" width="40" height="16" rx="2" fill="#e6bc7e" stroke="#2c241a" stroke-width="1.5"/>
+                    <line x1="35" y1="50" x2="65" y2="50" stroke="#2c241a" stroke-width="2"/>
+                    <line x1="35" y1="55" x2="55" y2="55" stroke="#2c241a" stroke-width="1.5"/>
+                    <text x="50" y="72" font-size="8" text-anchor="middle" fill="#e6bc7e" font-family="monospace" font-weight="bold">ACTION</text>
                 </svg>
-                <span>🎞️ · letterboxd · 🎞️</span>
+                <div class="art-caption">🎞️ · CINEMA · NICHE FILMS · 🎞️</div>
             </div>
         </div>
 
@@ -215,8 +257,9 @@
             <small>PVCC forever · ICC roots</small>
         </div>
     </div>
-    <div class="footer-note">
-        ✦  ASU to PVCC: same ridiculous jokes, different zip code  ✦
+
+    <div class="footer-cinema">
+        ✦  ASU to PVCC · same ridiculous jokes, different zip code · 35mm memories  ✦
     </div>
 </div>
 </body>
