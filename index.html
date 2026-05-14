@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>For Jan · A card from Scott</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a2a3a 0%, #0f1a24 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Georgia', serif;
+            padding: 2rem 1.5rem;
+        }
+
+        /* main card – warm, intimate, vintage-postcard feel */
+        .card {
+            max-width: 800px;
+            width: 100%;
+            background: #fffef7;
+            background-image: radial-gradient(circle at 10% 20%, rgba(245, 240, 225, 0.4) 2%, transparent 2.5%);
+            background-size: 28px 28px;
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.4), 0 8px 18px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.01);
+        }
+
+        /* header with subtle film/soccer accents */
+        .header-tape {
+            background: #f4e9d8;
+            padding: 0.75rem 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: #b47c48;
+            border-bottom: 1px dashed #e2cfb3;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-family: monospace;
+        }
+
+        .letter-body {
+            padding: 2.5rem 2.2rem 2rem 2.2rem;
+        }
+
+        /* greeting */
+        .greeting {
+            font-size: 1.9rem;
+            font-weight: 600;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #2c3e2f;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.3px;
+            border-left: 5px solid #cb8b3e;
+            padding-left: 1.2rem;
+        }
+
+        .message {
+            font-size: 1.08rem;
+            line-height: 1.65;
+            color: #2c2820;
+            margin-bottom: 2rem;
+            font-weight: 450;
+        }
+
+        .message p {
+            margin-bottom: 1.2rem;
+        }
+
+        .message .highlight {
+            background: #faeecb;
+            padding: 0 4px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        /* two‑image row (Messi + Letterboxd) */
+        .icons-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0 2rem 0;
+            background: #fef8ef;
+            padding: 1.2rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid #f0e2cf;
+        }
+
+        .image-unit {
+            text-align: center;
+            flex: 1;
+            min-width: 140px;
+        }
+
+        .image-unit span {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a57743;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .messi-img {
+            max-width: 180px;
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+            border: 2px solid #fff2e2;
+            background: white;
+        }
+
+        .letterboxd-img {
+            max-width: 160px;
+            width: 100%;
+            border-radius: 24px;
+            background: #1a2c2e;
+            padding: 6px 12px;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+        }
+
+        /* signature */
+        .signature {
+            margin-top: 2.2rem;
+            text-align: right;
+            font-family: 'Brush Script MT', 'Segoe Script', cursive;
+            font-size: 2.3rem;
+            font-weight: normal;
+            color: #5e3a1f;
+            border-top: 2px dotted #eeddbb;
+            padding-top: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .signature small {
+            font-family: 'Segoe UI', monospace;
+            font-size: 0.75rem;
+            display: block;
+            color: #856e4b;
+            letter-spacing: 0;
+            margin-top: 5px;
+        }
+
+        /* retro footer */
+        .footer-note {
+            background: #f5ede1;
+            padding: 0.7rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #a28058;
+            border-top: 1px solid #ebddca;
+            font-family: monospace;
+        }
+
+        @media (max-width: 550px) {
+            .letter-body {
+                padding: 1.8rem;
+            }
+            .greeting {
+                font-size: 1.6rem;
+            }
+            .message {
+                font-size: 0.98rem;
+            }
+            .icons-row {
+                gap: 1rem;
+            }
+            .signature {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="header-tape">
+        ⚽ 🎞️  ·  pvcc · icc memories  ·  🎞️ ⚽
+    </div>
+    <div class="letter-body">
+        <div class="greeting">
+            Dear Jan,
+        </div>
+
+        <div class="message">
+            <p>This is my last semester at <strong>PVCC</strong>. I know you're at ASU lately, but I always loved you since the beginning of when I met you at PVCC and our experience in the <strong>ICC</strong> — and how we always talk about niche movies, football and <span class="highlight">retarded jokes</span>. </p>
+            <p>I will always appreciate the intimate conversations we had. From late-night breakdowns of obscure Criterion films to heated Messi debates and the kind of dumb, unfiltered laughs that only real friends share — those moments are tattooed on my memory.</p>
+            <p>Wishing you nothing but the best in Tempe. Keep the projector running and the banter sharp.</p>
+        </div>
+
+        <!-- MESSI image + LETTERBOXD logo (as you asked) -->
+        <div class="icons-row">
+            <div class="image-unit">
+                <img class="messi-img" 
+                     src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Lionel_Messi_20180626.jpg" 
+                     alt="Lionel Messi - football legend"
+                     title="⚽ The GOAT, just like our football talks">
+                <span>🇦🇷 · the messi magic</span>
+            </div>
+            <div class="image-unit">
+                <img class="letterboxd-img" 
+                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Letterboxd_Logo.png/1024px-Letterboxd_Logo.png" 
+                     alt="Letterboxd logo - film logging"
+                     title="🎬 Letterboxd — for all our niche movie obsessions">
+                <span>🎞️ · letterboxd · 🎞️</span>
+            </div>
+        </div>
+
+        <div class="signature">
+            Love, Scott.
+            <small>PVCC forever · ICC roots</small>
+        </div>
+    </div>
+    <div class="footer-note">
+        ✦  asu to pvcc: same ridiculous jokes, different zip code  ✦
+    </div>
+</div>
+</body>
+</html>
